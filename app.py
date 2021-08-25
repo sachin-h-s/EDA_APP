@@ -23,11 +23,10 @@ if uploaded_file is not None:
         csv = pd.read_csv(uploaded_file)
         return csv
     df = load_csv()
-    pr = ProfileReport(df, explorative=True)
-    st.header('**Input DataFrame**')
+    pr = df.profile_report()
+    st.header('*Input DataFrame*')
+    st.title("Pandas Profiling in Streamlit")
     st.write(df)
-    st.write('---')
-    st.header('**Pandas Profiling Report**')
     st_profile_report(pr)
 else:
     st.info('Awaiting for CSV file to be uploaded.')
